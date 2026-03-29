@@ -1,25 +1,15 @@
-# Use postgres/example user/password credentials
+# Docker Compose for MySQL 8.1.0
 version: '3.1'
 
 services:
-  postgres-db-9.5.25:
-    image: postgres:9.5.25-alpine
+
+  jpa-mysql8_1:
+    image: mysql:8.1.0
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
-    ports:
-      - 54320:5432
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-    volumes:
-      - ./postgres-database-schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
-    networks:
-      - common-network
-
-networks:
-  common-network:
-    external: true
-
-#The PostgreSQL database
-#Server : localhost
-#User/Pass : root/root
-#Database : root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306

@@ -6,4 +6,4 @@ all:
     target_server:
       hosts:
         remoteServer:
-          ansible_host: "{{ postgres_ip }}"
+          ansible_host: "{{ mysql_ip }}"

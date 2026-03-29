@@ -1,5 +1,5 @@
 ---
-- name: Provision Docker + Docker Compose plugin + PostgreSQL
+- name: Provision Docker + Docker Compose plugin + MySQL
   hosts: target_server
   become: true
 
@@ -7,12 +7,12 @@
     - setup-ips.yml
 
   vars:
-    app_dir: /opt/rabbitmq2
+    app_dir: /opt/mysql2
 
   tasks:
-    - name: Show the target host IP for PostgreSQL (Server 2)
+    - name: Show the target host IP for MySQL (Server 2)
       debug:
-        msg: "Target IP is {{ postgres_ip }}"
+        msg: "Target IP is {{ mysql_ip }}"
 
     - name: Create application directory
       ansible.builtin.file:
