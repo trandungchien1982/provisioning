@@ -23,7 +23,7 @@ RabbitMQ Server 3
     + Admin UI : http://{ip}:35672
     + User: admin
     + Pass: admin
-    + Connect port: 35672
+    + Connect port: 56723
 
 
 
