@@ -110,7 +110,7 @@
         dest: "{{ app_dir }}/docker-compose.yaml"
         mode: "0644"
 
-    - name: Start ActiveMQ with Docker Compose v2
+    - name: Start Mailpit with Docker Compose v2
       ansible.builtin.command:
         cmd: docker compose up -d
       args:

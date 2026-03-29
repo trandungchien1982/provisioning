@@ -1,5 +1,12 @@
 # The list of all IPs will be used before each Ansible Playbook has been rn
 # We use refer this list for all IP services
+# 01.RabbitMQ
 rabbitmq_ip: 139.162.38.126
+# 02.PostgreSQL
 postgres_ip: 139.162.38.126
+# 03.MySQL
 mysql_ip: 139.162.38.126
+# 04.ActiveMQ
+activemq_ip: 139.162.38.126
+# 05.Mailpit (Email Server)
+mailpit_ip: 139.162.38.126
