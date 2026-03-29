@@ -12,10 +12,10 @@
   tasks:
   
     - debug:
-        msg: "Target SSH host: {{ rabbitmq_ip }}"
+      msg: "Target SSH host: {{ rabbitmq_ip }}"
         
     - set_fact:
-       ansible_host: "{{ rabbitmq_ip }}"
+      ansible_host: "{{ rabbitmq_ip }}"
         
     - name: Remove conflicting Docker packages
       tags: docker_install
