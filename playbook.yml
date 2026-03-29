@@ -116,18 +116,21 @@
 
     - name: Create Docker network common-network
       tags: docker_install_network
-      ansible.builtin.command: docker network create common-network
+      ansible.builtin.command:
+        cmd: docker network create common-network
       ignore_errors: yes
 
     - name: Start RabbitMQ with Docker Compose v2
       tags: rabbitmq
-      ansible.builtin.command: docker compose up -d
+      ansible.builtin.command:
+        cmd: docker compose up -d
       args:
         chdir: "{{ app_dir }}"
 
     - name: Show running containers
       tags: rabbitmq
-      ansible.builtin.command: docker ps
+      ansible.builtin.command:
+        cmd: docker ps
       register: docker_ps
       changed_when: false
 
