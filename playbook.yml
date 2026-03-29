@@ -1,5 +1,5 @@
 ---
-- name: Provision Docker + Docker Compose plugin + MySQL
+- name: Provision Docker + Docker Compose plugin + ActiveMQ
   hosts: target_server
   become: true
 
@@ -7,12 +7,12 @@
     - setup-ips.yml
 
   vars:
-    app_dir: /opt/mysql
+    app_dir: /opt/activemq
 
   tasks:
-    - name: Show the target host IP for MySQL
+    - name: Show the target host IP for ActiveMQ
       debug:
-        msg: "Target IP is {{ mysql_ip }}"
+        msg: "Target IP is {{ activemq_ip }}"
 
     - name: Remove conflicting Docker packages
       tags: docker_install
@@ -110,7 +110,7 @@
         dest: "{{ app_dir }}/docker-compose.yaml"
         mode: "0644"
 
-    - name: Start RabbitMQ with Docker Compose v2
+    - name: Start ActiveMQ with Docker Compose v2
       ansible.builtin.command:
         cmd: docker compose up -d
       args:
