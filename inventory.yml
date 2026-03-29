@@ -1,9 +1,0 @@
-all:
-  vars:
-    ansible_user: root
-
-  children:
-    rabbitmq_server:
-      hosts:
-        remoteServer:
-          ansible_host: "{{ rabbitmq_ip }}"
