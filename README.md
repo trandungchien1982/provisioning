@@ -1,4 +1,4 @@
-# provisioning
+# provisioning - 01.RabbitMQ
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
 # Thay thế {rabbitmq_ip} trong file setup-ips.yml thành
