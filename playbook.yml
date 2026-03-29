@@ -10,13 +10,11 @@
     app_dir: /opt/rabbitmq
 
   tasks:
-  
-    - debug:
-      msg: "Target SSH host: {{ rabbitmq_ip }}"
-        
-    - set_fact:
-      ansible_host: "{{ rabbitmq_ip }}"
-        
+#    - debug:
+#      msg: "Target SSH host: {{ rabbitmq_ip }}"
+#    - set_fact:
+#      ansible_host: "{{ rabbitmq_ip }}"
+
     - name: Remove conflicting Docker packages
       tags: docker_install
       ansible.builtin.apt:
