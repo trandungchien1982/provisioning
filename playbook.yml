@@ -85,11 +85,6 @@
         enabled: true
         state: started
 
-    - name: Create Docker network common-network
-      community.docker.docker_network:
-        name: common-network
-        state: present
-
     - name: Create application directory
       tags: rabbitmq
       ansible.builtin.file:
@@ -110,6 +105,11 @@
         src: files/docker-compose.yaml
         dest: "{{ app_dir }}/docker-compose.yaml"
         mode: "0644"
+
+    - name: Create Docker network common-network
+      tags: docker_install_network
+      ansible.builtin.command: docker network create common-network
+      ignore_errors: yes
 
     - name: Start RabbitMQ with Docker Compose v2
       tags: rabbitmq
