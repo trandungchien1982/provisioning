@@ -6,4 +6,4 @@ all:
     rabbitmq_server:
       hosts:
         remoteServer:
-          ansible_host: "{{ rabbitmq_ip }}"
+          ansible_host: "{{ postgres_ip }}"

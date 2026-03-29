@@ -7,7 +7,7 @@
     - setup-ips.yml
 
   vars:
-    app_dir: /opt/rabbitmq
+    app_dir: /opt/postres
 
   tasks:
     - name: Remove conflicting Docker packages
@@ -95,41 +95,40 @@
       ignore_errors: yes
 
     - name: Create application directory
-      tags: rabbitmq
       ansible.builtin.file:
         path: "{{ app_dir }}"
         state: directory
         mode: "0755"
 
     - name: Copy .env file
-      tags: rabbitmq
       ansible.builtin.copy:
         src: files/.env
         dest: "{{ app_dir }}/.env"
         mode: "0600"
 
+    - name: Copy database schema file
+      ansible.builtin.copy:
+        src: files/postgres-database-schema.sql
+        dest: "{{ app_dir }}/postgres-database-schema.sql"
+        mode: "0600"
     - name: Copy docker-compose.yaml
-      tags: rabbitmq
       ansible.builtin.copy:
         src: files/docker-compose.yaml
         dest: "{{ app_dir }}/docker-compose.yaml"
         mode: "0644"
 
     - name: Start RabbitMQ with Docker Compose v2
-      tags: rabbitmq
       ansible.builtin.command:
         cmd: docker compose up -d
       args:
         chdir: "{{ app_dir }}"
 
     - name: Show running containers
-      tags: rabbitmq
       ansible.builtin.command:
         cmd: docker ps
       register: docker_ps
       changed_when: false
 
     - name: Print running containers
-      tags: rabbitmq
       ansible.builtin.debug:
         var: docker_ps.stdout_lines
