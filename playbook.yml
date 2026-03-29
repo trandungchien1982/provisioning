@@ -1,5 +1,5 @@
 ---
-- name: Provision Docker + Docker Compose plugin + ActiveMQ
+- name: Provision Docker + Docker Compose plugin + Mailpit (Email Server with Sandbox)
   hosts: target_server
   become: true
 
@@ -7,12 +7,12 @@
     - setup-ips.yml
 
   vars:
-    app_dir: /opt/activemq
+    app_dir: /opt/mailpit
 
   tasks:
-    - name: Show the target host IP for ActiveMQ
+    - name: Show the target host IP for Mailpit (Email Server with Sandbox)
       debug:
-        msg: "Target IP is {{ activemq_ip }}"
+        msg: "Target IP is {{ mailpit_ip }}"
 
     - name: Remove conflicting Docker packages
       tags: docker_install
