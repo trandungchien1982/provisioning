@@ -1,6 +1,6 @@
 # The list of all IPs will be used before each Ansible Playbook has been rn
 # We use refer this list for all IP services
-rabbitmq_ip: 45.118.132.93
+rabbitmq_ip: 139.162.33.26
 postgres_ip: 47.118.135.923
 postgres_ip2: 47.118.135.923
 postgres_ip3: 47.118.135.923
