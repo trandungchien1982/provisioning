@@ -1,0 +1,51 @@
+{
+  "realm": "demo-realm",
+  "enabled": true,
+  "sslRequired": "NONE",
+
+  "roles": {
+    "realm": [
+      { "name": "root" },
+      { "name": "moderator" }
+    ]
+  },
+
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["root", "moderator"]
+    }
+  ],
+
+  "clients": [
+    {
+      "clientId": "demo-client",
+      "enabled": true,
+      "protocol": "openid-connect",
+
+      "publicClient": false,
+      "secret": "demo-secret",
+
+      "redirectUris": [
+        "http://localhost:8081/callback"
+      ],
+
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      }
+    }
+  ]
+}

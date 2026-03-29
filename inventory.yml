@@ -6,4 +6,4 @@ all:
     target_server:
       hosts:
         remoteServer:
-          ansible_host: "{{ mailpit_ip }}"
+          ansible_host: "{{ oauth2_ip }}"

@@ -1,5 +1,5 @@
 ---
-- name: Provision Docker + Docker Compose plugin + Mailpit (Email Server with Sandbox)
+- name: Provision Docker + Docker Compose plugin + OAuth2 (Keycloak) + Authorization Code
   hosts: target_server
   become: true
 
@@ -7,12 +7,12 @@
     - setup-ips.yml
 
   vars:
-    app_dir: /opt/mailpit
+    app_dir: /opt/oauth2
 
   tasks:
-    - name: Show the target host IP for Mailpit (Email Server with Sandbox)
+    - name: Show the target host IP for OAuth2 (Keycloak) + Authorization Code
       debug:
-        msg: "Target IP is {{ mailpit_ip }}"
+        msg: "Target IP is {{ oauth2_ip }}"
 
     - name: Remove conflicting Docker packages
       tags: docker_install
@@ -110,7 +110,13 @@
         dest: "{{ app_dir }}/docker-compose.yaml"
         mode: "0644"
 
-    - name: Start Mailpit with Docker Compose v2
+    - name: Copy realm.json
+      ansible.builtin.copy:
+        src: files/realm.json
+        dest: "{{ app_dir }}/realm.json"
+        mode: "0644"
+
+    - name: Start OAuth2 Server with Docker Compose v2
       ansible.builtin.command:
         cmd: docker compose up -d
       args:
