@@ -7,9 +7,9 @@ Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansi
 
 
 # Danh sách các nhánh provisioning:
-- 01.RabbitMQ
-  https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
-- 02.PostgreSQL
+- 01.RabbitMQ: 
+   + https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
+- 02.PostgreSQL: https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
 - 03.MySQL
 
 Main RabbitMQ Server
