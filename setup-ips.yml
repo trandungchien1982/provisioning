@@ -8,3 +8,5 @@ postgres_ip: 139.162.38.126
 mysql_ip: 139.162.38.126
 # 04.ActiveMQ
 activemq_ip: 139.162.38.126
+# 05.Mailpit (Email Server)
+mailpit_ip: 139.162.38.126
