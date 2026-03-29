@@ -1,7 +1,6 @@
 services:
   rabbitmq2:
     image: rabbitmq:3-management
-    container_name: rabbitmq
     restart: unless-stopped
     ports:
       - "56722:5672"

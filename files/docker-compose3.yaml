@@ -1,14 +1,14 @@
 services:
-  rabbitmq:
+  rabbitmq3:
     image: rabbitmq:3-management
     restart: unless-stopped
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "56723:5672"
+      - "35672:15672"
     env_file:
       - .env
     volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_data3:/var/lib/rabbitmq
 
 volumes:
-  rabbitmq_data:
+  rabbitmq_data3:
