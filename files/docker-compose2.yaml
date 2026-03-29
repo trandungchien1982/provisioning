@@ -1,0 +1,16 @@
+services:
+  rabbitmq2:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "56722:5672"
+      - "25672:15672"
+    env_file:
+      - .env
+    volumes:
+      - rabbitmq_data2:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq_data2:
