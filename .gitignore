@@ -1,0 +1,4 @@
+# Default ignored files
+/ansible-env/
+/setup-ips.yml
+/.idea/

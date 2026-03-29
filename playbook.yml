@@ -1,6 +1,6 @@
 ---
-- name: Provision Docker + Docker Compose plugin + RabbitMQ
-  hosts: rabbitmq_server
+- name: Provision Docker + Docker Compose plugin + PostgreSQL
+  hosts: target_server
   become: true
 
   vars_files:
@@ -10,6 +10,10 @@
     app_dir: /opt/postres
 
   tasks:
+    - name: Show the target host IP for PostgreSQL
+      debug:
+        msg: "Target IP is {{ postgres_ip }}"
+
     - name: Remove conflicting Docker packages
       tags: docker_install
       ansible.builtin.apt:
@@ -99,12 +103,6 @@
         path: "{{ app_dir }}"
         state: directory
         mode: "0755"
-
-    - name: Copy .env file
-      ansible.builtin.copy:
-        src: files/.env
-        dest: "{{ app_dir }}/.env"
-        mode: "0600"
 
     - name: Copy database schema file
       ansible.builtin.copy:

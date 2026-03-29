@@ -3,7 +3,7 @@ all:
     ansible_user: root
 
   children:
-    rabbitmq_server:
+    target_server:
       hosts:
         remoteServer:
           ansible_host: "{{ postgres_ip }}"

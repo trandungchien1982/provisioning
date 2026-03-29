@@ -1,14 +1,25 @@
-services:
-  rabbitmq2:
-    image: rabbitmq:3-management
-    restart: unless-stopped
-    ports:
-      - "56722:5672"
-      - "25672:15672"
-    env_file:
-      - .env
-    volumes:
-      - rabbitmq_data2:/var/lib/rabbitmq
+# Use postgres/example user/password credentials
+version: '3.1'
 
-volumes:
-  rabbitmq_data2:
+services:
+  postgres-db-9.5.25-2:
+    image: postgres:9.5.25-alpine
+    restart: always
+    ports:
+      - 54322:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./postgres-database-schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
+    networks:
+      - common-network
+
+networks:
+  common-network:
+    external: true
+
+#The PostgreSQL database
+#Server : localhost
+#User/Pass : root/root
+#Database : root
