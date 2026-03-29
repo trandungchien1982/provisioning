@@ -14,3 +14,4 @@ Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansi
 - 03.MySQL
 - 04.ActiveMQ
 - 05.Mailpit
+- 06.Keycloak+OAuth2+AuthorizationCode
