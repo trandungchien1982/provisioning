@@ -6,7 +6,34 @@ Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansi
     rabbitmq_ip: 139.162.33.26
 
 
-# Danh sách các nhánh provisioning:
+# Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
+Config tuỳ chỉnh sử dụng Terraform + Multipass
+
+vCPU: 1 core, 2Gb RAM, SSD 10Gb (chỉ định trong terraform)
+
+Naming của VM Ubuntu (chỉ định trong terraform hoặc file cloud-config.yaml)
+
+Cài sẵn : Docker, Java 25, Maven, Git, Gradle, Ansible
+
+User/Pass : root/root và cho phép SSH
+
+Cho phép SSH với các public key sau đây :
+
+~/.ssh/id_rsa.pub
+
+./allowed_public_keys
+
+Tiến hành start docker mặc định trong hệ thống
+
+Cho phép execute script nằm trong file : ./script.sh sau khi đã tạo xong
+
+Terraform sau khi initial xong sẽ in ra các thông tin sau đây trong file output-config.yaml
+
+host_ip: ${targetVM_IP}
+
+createdAt: ${now()}
+
+
 - 01.RabbitMQ: 
    + https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
 - 02.PostgreSQL: 
