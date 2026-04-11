@@ -12,3 +12,5 @@ activemq_ip: 139.162.38.126
 mailpit_ip: 139.162.38.126
 # 06.Keycloak+OAuth2+AuthorizationCode
 oauth2_ip: 139.162.38.126
+# 07.Ubuntu
+ubuntu_ip: 139.162.38.126
