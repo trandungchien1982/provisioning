@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-VM_NAME="vm-tdc-12"
+# Provision the Ubuntu 24.04 LTS using Multipass + Terraform
+# VM Name, e.g. vm-tdc-01
+VM_NAME="vm-tdc-20"
+
+# Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
 
 echo "==> Checking dependencies..."
@@ -40,9 +44,3 @@ echo "Provisioning completed!"
 echo "VM IP: ${VM_IP}"
 echo "===================================="
 
-echo "===================================="
-echo "Call action after provision finish, prevent timeout error ..."
-multipass transfer script-after.sh $VM_NAME:/home/ubuntu/
-multipass exec $VM_NAME -- chmod +x /home/ubuntu/script-after.sh
-multipass exec $VM_NAME -- /home/ubuntu/script-after.sh
-echo "===================================="

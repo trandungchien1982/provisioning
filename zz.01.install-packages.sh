@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
+ABC="123"
 
+# Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."
 sudo apt update
 
