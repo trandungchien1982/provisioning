@@ -9,16 +9,17 @@ users:
 ssh_pwauth: true
 disable_root: false
 
-package_update: true
-package_upgrade: true
+package_update: false
+package_upgrade: false
 
 packages:
-  - docker.io
-  - docker-compose
-  - openjdk-21-jdk
-  - maven
-  - gradle
-  - curl
+  # Ignore all following CLI because it will make Terraform to be timeout ...
+  #- docker.io
+  #- docker-compose
+  #- openjdk-21-jdk
+  #- maven
+  #- gradle
+  #- curl
 
 write_files:
   - path: /opt/stack/docker-compose.yml
@@ -59,9 +60,10 @@ write_files:
           restart: unless-stopped
 
 runcmd:
+  # Ignore all following CLI because it will make Terraform to be timeout ...
   # Enable & start docker
-  - systemctl enable docker
-  - systemctl start docker
+  #- systemctl enable docker
+  #- systemctl start docker
 
   # Wait until docker is ready
   #- until docker info; do sleep 2; done

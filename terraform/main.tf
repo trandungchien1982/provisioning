@@ -1,5 +1,7 @@
+# Khai báo biến, lấy từ khai báo trong provision.sh
+# TF_VAR_VM_NAME
 resource "multipass_instance" "vm" {
-  name   = "vm-test-01"
+  name   = "vm-tdc-12"
   cpus   = 2
   memory = "4G"
   disk   = "20G"
