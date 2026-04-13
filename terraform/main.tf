@@ -1,5 +1,5 @@
 resource "multipass_instance" "vm" {
-  name   = "vm-tdc41"
+  name   = "vm-test-01"
   cpus   = 2
   memory = "4G"
   disk   = "20G"

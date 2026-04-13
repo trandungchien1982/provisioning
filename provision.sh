@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-VM_NAME="target-vm"
 RESULT_FILE="result.yaml"
 
 echo "==> Checking dependencies..."
