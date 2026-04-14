@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-tdc-20"
+VM_NAME="vm-rabbitmq"
 
 # Start RabbitMQ with following information:
 echo "==> Start RabbitMQ - tdc ..."

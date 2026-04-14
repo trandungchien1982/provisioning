@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+VM_NAME="vm-rabbitmq"
+
 # Start RabbitMQ with following information:
 echo "==> Start RabbitMQ..."
 echo "===================================="

@@ -2,7 +2,7 @@
 set -e
 
 # Start RabbitMQ with following information:
-echo "==> Start RabbitMQ..."
+echo "==> Start RabbitMQ, version 02 - tdc..."
 echo "===================================="
 sudo docker run --detach --hostname second-rabbit --name second-rabbit \
     --env RABBITMQ_DEFAULT_USER=admin \

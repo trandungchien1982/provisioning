@@ -3,7 +3,7 @@ set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
 # VM Name, e.g. vm-tdc-01
-VM_NAME="vm-tdc-20"
+VM_NAME="vm-rabbitmq"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
@@ -44,3 +44,9 @@ echo "Provisioning completed!"
 echo "VM IP: ${VM_IP}"
 echo "===================================="
 
+echo "======================================="
+echo "Try to mount folder to main host"
+mkdir ~/tdchien-mount/$VM_NAME
+multipass mount ~/tdchien-mount/$VM_NAME $VM_NAME:/root/$VM_NAME
+echo "Finish mounting folder : ~/tdchien-mount/$VM_NAME into $VM_NAME:/root/$VM_NAME"
+echo "===================== End provision ... "
