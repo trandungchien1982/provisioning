@@ -9,5 +9,6 @@ sudo docker run --detach --hostname second-rabbit --name second-rabbit \
     --env RABBITMQ_DEFAULT_PASS=admin \
     --publish 16672:15672 \
     --publish 6672:5672 \
+    --restart unless-stopped \
      rabbitmq:management
 echo "==> Done! RabbitMQ ..."
