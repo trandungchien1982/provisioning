@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-postgres"
+VM_NAME="vm-mysql"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "===================================="
