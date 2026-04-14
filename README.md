@@ -1,4 +1,4 @@
-# provisioning - Môi trường MySQL database trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường ActiveMQ trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
 # Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...

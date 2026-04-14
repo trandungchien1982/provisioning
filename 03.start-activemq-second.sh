@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-mysql"
-APP_NAMING="mysql"
+VM_NAME="vm-activemq"
+APP_NAMING="activemq"
 
-# Start MySQL - two with following information:
-echo "==> Start MySQL - two ..."
+# Start ActiveMQ - two with following information:
+echo "==> Start ActiveMQ - two ..."
 echo "===================================="
 multipass transfer zz.03.start-$APP_NAMING-second.sh $VM_NAME:/home/ubuntu/
 multipass exec $VM_NAME -- chmod +x /home/ubuntu/zz.03.start-$APP_NAMING-second.sh

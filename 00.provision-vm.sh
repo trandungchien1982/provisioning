@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-mysql
-VM_NAME="vm-mysql"
+# VM Name, e.g. vm-activemq
+VM_NAME="vm-activemq"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
