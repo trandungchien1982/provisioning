@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-postres
-VM_NAME="vm-postres"
+# VM Name, e.g. vm-postgres
+VM_NAME="vm-postgres"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

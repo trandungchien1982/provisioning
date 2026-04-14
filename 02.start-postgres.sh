@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-postres"
+VM_NAME="vm-postgres"
 APP_NAMING="postgres"
 
 # Start PostgreSQL with following information:

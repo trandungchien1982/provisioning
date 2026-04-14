@@ -1,14 +1,15 @@
 #!/bin/bash
 set -e
 
+VM_NAME="vm-postgres"
+
 # Start RabbitMQ with following information:
-echo "==> Start RabbitMQ, version 02 - tdc..."
+echo "==> Start PostgreSQL - second ..."
 echo "===================================="
-sudo docker run --detach --hostname second-rabbit --name second-rabbit \
-    --env RABBITMQ_DEFAULT_USER=admin \
-    --env RABBITMQ_DEFAULT_PASS=admin \
-    --publish 16672:15672 \
-    --publish 6672:5672 \
+sudo docker run --name second-postgres --detach --hostname second-postgres \
+    -e POSTGRES_USER=second \
+    -e POSTGRES_PASSWORD=second \
+    --publish 6432:5432 \
     --restart unless-stopped \
-     rabbitmq:management
-echo "==> Done! RabbitMQ ..."
+    postgres:15
+echo "==> Done! PostgreSQL | Second ..."
