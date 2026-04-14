@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-tdc-01
-VM_NAME="vm-rabbitmq"
+# VM Name, e.g. vm-postres
+VM_NAME="vm-postres"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
