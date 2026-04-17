@@ -1,35 +1,89 @@
-# provisioning - Môi trường ActiveMQ trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường GrafanaLogs trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
-# Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...
-# File setup-ips.yml sẽ chứa mapping cho ansible_host và được copy trước mỗi lần chạy Ansible, vd như :
-    rabbitmq_ip: 139.162.33.26
+# Prompt mô tả cho AI : ChatGPT
+Tao đang ở môi trường Ubuntu 24.04 LTS và dự định deploy một hệ thống capture logs Java Apps như sau : 
+- Java Apps được triển khai trên k8s cluster với IP1, sử dụng Docker + K3D + K3S. 
+- Grafana Loki (log management) và các tool liên quan triển khai trên VM IP2, sử dụng Docker. 
 
+Hãy liệt kê các bước chi tiết và script triển khai cụ thể, bao gồm : 
+- CLI (hoặc script .sh trên từng môi trường)
+- Script docker run hoặc docker-compose
 
-# Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
-Config tuỳ chỉnh sử dụng Terraform + Multipass
+# Phản hồi từ ChatGPT dành cho việc tạo Grafana Loki trên VM IP2
+II. TRIỂN KHAI TRÊN IP2 (LOKI + GRAFANA)
+1. Tạo thư mục
+   mkdir -p /opt/loki/{config,data}
+   cd /opt/loki
+2. File cấu hình Loki
 
-vCPU: 1 core, 2Gb RAM, SSD 10Gb (chỉ định trong terraform)
+/opt/loki/config/loki-config.yaml
 
-Naming của VM Ubuntu (chỉ định trong terraform hoặc file cloud-config.yaml)
+auth_enabled: false
 
-Cài sẵn : Docker, Java 25, Maven, Git, Gradle, Ansible
+server:
+http_listen_port: 3100
 
-User/Pass : root/root và cho phép SSH
+common:
+path: /loki
+storage:
+filesystem:
+chunks_directory: /loki/chunks
+rules_directory: /loki/rules
 
-Cho phép SSH với các public key sau đây :
+schema_config:
+configs:
+- from: 2024-01-01
+store: tsdb
+object_store: filesystem
+schema: v13
+index:
+prefix: index_
+period: 24h
 
-~/.ssh/id_rsa.pub
+limits_config:
+retention_period: 168h
 
-./allowed_public_keys
+compactor:
+working_directory: /loki/compactor
+3. Docker Compose (Khuyến nghị)
 
-Tiến hành start docker mặc định trong hệ thống
+docker-compose.yml
 
-Cho phép execute script nằm trong file : ./script.sh sau khi đã tạo xong
+version: "3.8"
 
-Terraform sau khi initial xong sẽ in ra các thông tin sau đây trong file output-config.yaml
+services:
+loki:
+image: grafana/loki:2.9.8
+container_name: loki
+ports:
+- "3100:3100"
+volumes:
+- ./config/loki-config.yaml:/etc/loki/loki.yaml
+- ./data:/loki
+command: -config.file=/etc/loki/loki.yaml
 
-host_ip: ${targetVM_IP}
+grafana:
+image: grafana/grafana:10.4.2
+container_name: grafana
+ports:
+- "3000:3000"
+environment:
+- GF_SECURITY_ADMIN_PASSWORD=admin
+volumes:
+- grafana-storage:/var/lib/grafana
 
-createdAt: ${now()}
+volumes:
+grafana-storage:
+4. Start services
+   docker compose up -d
+5. Add Loki datasource (Grafana)
 
+Vào:
+
+http://IP2:3000
+user: admin / admin
+Add datasource:
+URL: http://loki:3100   (nếu cùng network docker)
+hoặc
+http://IP2:3100

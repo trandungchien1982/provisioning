@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-activemq
-VM_NAME="vm-activemq"
+# VM Name, e.g. vm-grafana-loki
+VM_NAME="vm-grafana-loki"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
