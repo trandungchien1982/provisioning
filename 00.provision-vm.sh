@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-grafana-loki
-VM_NAME="vm-grafana-loki"
+# VM Name, e.g. vm-k3d-cluster
+VM_NAME="vm-k3d-cluster"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

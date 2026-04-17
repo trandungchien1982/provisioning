@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-grafana-loki"
+VM_NAME="vm-k3d-cluster"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."
