@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: log-app
-          image: openjdk:17
+          image: openjdk:8u212-jdk-slim
           command: ["sh", "-c"]
           args:
             - |
