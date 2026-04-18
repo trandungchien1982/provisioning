@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-VM_NAME="vm-tdc-12"
+VM_NAME="vm-ubuntu"
 RESULT_FILE="result.yaml"
 
 echo "==> Checking dependencies..."
