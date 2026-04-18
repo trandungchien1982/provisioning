@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-activemq
-VM_NAME="vm-activemq"
+# VM Name, e.g. vm-keycloak
+VM_NAME="vm-keycloak"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
@@ -19,7 +19,7 @@ PUB_KEY=$(cat ~/.ssh/id_rsa.pub)
 cd terraform
 
 echo "==> Injecting SSH key into cloud-init..."
-sed -i "s|__SSH_KEY__|${PUB_KEY}|g" cloud-init.yaml
+sed -i.bak "s|__SSH_KEY__|${PUB_KEY}|g" cloud-init.yaml
 
 echo "==> Initializing Terraform..."
 terraform init
