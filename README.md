@@ -1,12 +1,17 @@
-# provisioning
+# Provisioning
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
-# Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...
-# File setup-ips.yml sẽ chứa mapping cho ansible_host và được copy trước mỗi lần chạy Ansible, vd như :
-    rabbitmq_ip: 139.162.33.26
+## Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...
+## Bước 1: Sử dụng Multipass để provision VM Ubuntu24.04 LTS 
+  (có thể sử dụng CLI thuần hoặc dùng Terraform để define vCPUs, RAM, Disk)
+## Bước 2: Multipass sẽ exec các CLIs, scripts.sh cần thiết ngay trên VM mới tạo ra để build Apps, Services, ...
 
+## Sample CLI multipass trực tiếp :
+```
+multipass launch -n vm-grafana-loki --cpus 1 --memory 3G --disk 20G --cloud-init cloud-init.yaml
+```
 
-# Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
+## Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
 Config tuỳ chỉnh sử dụng Terraform + Multipass
 
 vCPU: 1 core, 2Gb RAM, SSD 10Gb (chỉ định trong terraform)
@@ -32,13 +37,3 @@ Terraform sau khi initial xong sẽ in ra các thông tin sau đây trong file o
 host_ip: ${targetVM_IP}
 
 createdAt: ${now()}
-
-
-- 01.RabbitMQ: 
-   + https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
-- 02.PostgreSQL: 
-   + https://github.com/trandungchien1982/provisioning/blob/01.RabbitMQ/README.md
-- 03.MySQL
-- 04.ActiveMQ
-- 05.Mailpit
-- 06.Keycloak+OAuth2+AuthorizationCode
