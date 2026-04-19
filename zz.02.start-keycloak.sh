@@ -1,14 +1,11 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-activemq"
+VM_NAME="vm-keycloak"
 
 # Start inner Keycloak with following information:
 echo "==> Start Inner Keycloak ..."
+cd /home/ubuntu
+sudo docker-compose up -d
 echo "===================================="
-sudo docker run --name main-activemq --detach --hostname main-activemq \
-    --publish 61616:61616 \
-    --publish 8161:8161 \
-    --restart unless-stopped \
-    rmohr/activemq:5.14.2-alpine
 echo "==> Done! Inner Keycloak ..."
