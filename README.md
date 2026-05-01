@@ -1,10 +1,10 @@
-# provisioning - Môi trường GrafanaLogs trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường K3D Cluster dành cho EFK logging management trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
-# Prompt mô tả cho AI : ChatGPT
-Tao đang ở môi trường Ubuntu 24.04 LTS và dự định deploy một hệ thống capture logs Java Apps như sau : 
-- Java Apps được triển khai trên k8s cluster với IP1, sử dụng Docker + K3D + K3S. 
-- Grafana Loki (log management) và các tool liên quan triển khai trên VM IP2, sử dụng Docker. 
+# Lưu ý : 
+- Dành cho dev/test nên trong ElasticSearch chúng ta bỏ qua thiết lập User/Pass (no authenticate)
+- Bên phần setup EFK (ElasticSearch + FluentBit + Kibana) cũng sẽ bỏ qua phần authenticate
+- Có 1 số phần dư thừa khi extends từ phần Grafana + FluentBit + Loki nhưng qua đây lười xóa :) 
 
 Hãy liệt kê các bước chi tiết và script triển khai cụ thể, bao gồm : 
 - CLI (hoặc script .sh trên từng môi trường)
