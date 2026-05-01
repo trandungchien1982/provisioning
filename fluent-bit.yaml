@@ -14,11 +14,11 @@ spec:
     spec:
       serviceAccountName: fluent-bit
 
-      # Put into /etc/hosts of fluent container to understand the domain host: vm-grafana-loki = 10.169.10.106
+      # Put into /etc/hosts of fluent container to understand the domain host: vm-els-kibana = 10.169.10.69
       hostAliases:
-        - ip: "10.169.10.106"
+        - ip: "10.169.10.69"
           hostnames:
-            - "vm-grafana-loki"
+            - "vm-els-kibana"
 
       containers:
         - name: fluent-bit

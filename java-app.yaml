@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: log-app
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: log-app
@@ -19,7 +19,7 @@ spec:
           args:
             - |
               for i in $(seq 1 100); do
-                echo "Log dòng số $i từ Java app";
+                echo "Log dòng số $i từ Java app danh cho EFK - ElasticSearch - Fluent - Kibana ... ";
                 sleep 1;
               done;
               sleep 3600;

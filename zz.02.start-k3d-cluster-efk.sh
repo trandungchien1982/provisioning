@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-k3d-cluster"
+VM_NAME="vm-k3d-cluster-efk"
 
-echo "==> Start K3D Cluster Toolbar… ..."
+echo "==> Start K3D Cluster (EFK) Toolbar… ..."
 echo "===================================="
 # k3d
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
@@ -30,6 +30,6 @@ sudo kubectl get pods
 # Install K9S
 sudo snap install k9s
 sudo ln -s /snap/k9s/current/bin/k9s /snap/bin/k9s
-echo ""Finish install k9s
+echo "Finish install k9s"
 
-echo "==> Done! K3D Cluster ..."
+echo "==> Done! K3D Cluster (for EFK stack) ..."

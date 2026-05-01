@@ -40,13 +40,21 @@ data:
         Record job fluent-bit
 
     [OUTPUT]
-        Name              loki
+        Name              es
         Match             *
-        Host              vm-grafana-loki
-        Port              3100
-        Labels            job=fluent-bit,namespace=$kubernetes['namespace_name'],pod=$kubernetes['pod_name']
-        Line_Format       json
+        Host              vm-els-kibana
+        Port              9200
+        HTTP_User         elastic
+        HTTP_Passwd       elastic
+        Index             k8s-logs
+        Logstash_Format   On
+        Logstash_Prefix   k8s
+        Replace_Dots      On
         Retry_Limit       False
+        tls               Off
+        Suppress_Type_Name On
+        Type               doc
+        Generate_ID       On
 
   parsers.conf: |
     [PARSER]
