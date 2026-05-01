@@ -3,10 +3,11 @@ version: "3.8"
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.0
-    container_name: es8
+    container_name: elasticsearch-8
     environment:
-      - discovery.type=single-node
       - ELASTIC_PASSWORD=elastic
+
+      - discovery.type=single-node
       - xpack.security.enabled=false
       - xpack.security.http.ssl.enabled=false
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
@@ -15,30 +16,22 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
-  bootstrap:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.0
-    container_name: es_bootstrap
-    user: "0:0"
-    depends_on:
-      - elasticsearch
-    volumes:
-      - ./bootstrap.sh:/bootstrap.sh
-      - token_data:/token:rw
-    entrypoint: ["bash", "/bootstrap.sh"]
-
   kibana:
     image: docker.elastic.co/kibana/kibana:8.3.0
-    container_name: kibana8
+    container_name: kibana-8
     depends_on:
       - elasticsearch
-      - bootstrap
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+
+      - xpack.encryptedSavedObjects.encryptionKey=0123456789abcdef0123456789abcdef
+      - xpack.security.encryptionKey=abcdef0123456789abcdef0123456789
+      - xpack.reporting.encryptionKey=1234567890abcdef1234567890abcdef
+
+      - xpack.monitoring.ui.container.elasticsearch.enabled=true
+
     ports:
       - "5601:5601"
-    volumes:
-      - ./kibana-entrypoint.sh:/kibana-entrypoint.sh
-      - token_data:/token
-    entrypoint: ["bash", "/kibana-entrypoint.sh"]
 
 volumes:
   es_data:
-  token_data:
