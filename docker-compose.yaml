@@ -1,15 +1,39 @@
-version: "3.9"
-
+version: "3.8"
 services:
-  keycloak:
-    image: quay.io/keycloak/keycloak:26.1
-    restart: unless-stopped
-    container_name: keycloak-auth-provider
-    command: ["start-dev", "--import-realm"]
+  elasticsearch:
+    build:
+      context: ./config/elasticsearch
+      dockerfile: Dockerfile
     environment:
-      KC_BOOTSTRAP_ADMIN_USERNAME: admin
-      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      # Default super user is "elastic", we cannot change it
+      ELASTIC_PASSWORD: "elastic"
     ports:
-      - "8080:8080"
+      - 9200:9200
+      - 9300:9300
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -u elastic:elastic http://localhost:9200 >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     volumes:
-      - ./realm:/opt/keycloak/data/import
+      - ./data/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./data/elasticsearch/backups:/usr/share/elasticsearch/backups
+      - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    expose:
+      - "9200"
+      - "9300"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.0
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+    volumes:
+      - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+      - ./data/kibana/log:/var/log:rw
+    links:
+      - elasticsearch
+    ports:
+      - 5601:5601

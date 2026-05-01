@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-keycloak
-VM_NAME="vm-keycloak"
+# VM Name, e.g. vm-els-kibana
+VM_NAME="vm-els-kibana"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
