@@ -1,10 +1,13 @@
-# provisioning - Môi trường ActiveMQ trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường ElasticSearch+Kibana trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
 # Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...
 # File setup-ips.yml sẽ chứa mapping cho ansible_host và được copy trước mỗi lần chạy Ansible, vd như :
     rabbitmq_ip: 139.162.33.26
 
+# Thông tin login trong Kibana UI 
+- User : elastic 
+- Pass :  elastic
 
 # Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
 Config tuỳ chỉnh sử dụng Terraform + Multipass
