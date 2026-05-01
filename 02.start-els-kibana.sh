@@ -13,6 +13,10 @@ multipass exec $VM_NAME -- chmod +x /home/ubuntu/$APP_NAMING.sh
 
 # Copy all config files
 multipass transfer *.yaml $VM_NAME:/home/ubuntu/
+multipass transfer *.sh $VM_NAME:/home/ubuntu/
+
+multipass exec $VM_NAME -- chmod +x /home/ubuntu/bootstrap.sh
+multipass exec $VM_NAME -- chmod +x /home/ubuntu/kibana-entrypoint.sh
 
 multipass exec $VM_NAME -- mkdir -p /home/ubuntu/data/elasticsearch/data || true
 multipass exec $VM_NAME -- mkdir -p /home/ubuntu/data/elasticsearch/backups || true
