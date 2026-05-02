@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-redis
-VM_NAME="vm-redis"
+# VM Name, e.g. vm-mailpit
+VM_NAME="vm-mailpit"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

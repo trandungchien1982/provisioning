@@ -1,33 +1,16 @@
-version: '3.9'
-
 services:
-  redis:
-    image: redis:7.2-alpine
-    container_name: redis
-
-    command: >
-      redis-server
-      --appendonly yes
-      --save 60 1000
-      --protected-mode no
-
-    ports:
-      - "6379:6379"
+  mailpit:
+    image: axllent/mailpit:v1.29.7
+    restart: always
     volumes:
-      - ./redis_data:/data
-    restart: always
-    mem_limit: 4g
-
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  # UI for Redis browsing
-  redisinsight:
-    image: redis/redisinsight:3.4.2
-    container_name: redisinsight
+      - ./data:/data
     ports:
-      - "5540:5540"
-    restart: always
+      - 8025:8025
+      - 1025:1025
+    environment:
+      MP_MAX_MESSAGES: 30000
+      MP_DATABASE: /data/mailpit.db
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+      MP_SMTP_DISABLE_RDNS: "true"
+      MP_COMPRESSION: 1

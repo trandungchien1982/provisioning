@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-redis"
-APP_NAMING="zz.02.start-redis"
+VM_NAME="vm-mailpit"
+APP_NAMING="zz.02.start-mailpit"
 
-# Start Redis with following information:
-echo "==> Start Redis ..."
+# Start Mailpit with following information:
+echo "==> Start Mailpit ..."
 echo "===================================="
 multipass transfer $APP_NAMING.sh $VM_NAME:/home/ubuntu/
 multipass exec $VM_NAME -- chmod +x /home/ubuntu/$APP_NAMING.sh
@@ -19,4 +19,4 @@ multipass transfer *.yaml $VM_NAME:/home/ubuntu/
 multipass exec $VM_NAME -- /home/ubuntu/$APP_NAMING.sh
 echo "===================================="
 
-echo "==> Done! Redis"
+echo "==> Done! Mailpit"
