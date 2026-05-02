@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-keycloak
-VM_NAME="vm-minio-s3"
+# VM Name, e.g. vm-redis
+VM_NAME="vm-redis"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

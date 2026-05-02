@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-minio-s3"
+VM_NAME="vm-redis"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "===================================="
