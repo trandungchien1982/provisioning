@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-mailpit"
+VM_NAME="vm-mongodb"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."

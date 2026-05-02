@@ -1,15 +1,17 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-mailpit"
-APP_NAMING="zz.03.send-10K-mails"
+VM_NAME="vm-mongodb"
+APP_NAMING="zz.02.start-mongodb"
 
-# Start Send 10K mails with following information:
-echo "==> Start Send 10K mails ..."
+# Start MongoDB with following information:
+echo "==> Start MongoDB ..."
 echo "===================================="
+# Copy all config files (docker-compose, etc ...)
 multipass transfer *.* $VM_NAME:/home/ubuntu/
+
 multipass exec $VM_NAME -- chmod +x /home/ubuntu/$APP_NAMING.sh
 multipass exec $VM_NAME -- /home/ubuntu/$APP_NAMING.sh
 echo "===================================="
 
-echo "==> Done! Send 10K mails"
+echo "==> Done! MongoDB"

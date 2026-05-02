@@ -1,9 +1,9 @@
 # Khai báo biến, lấy từ khai báo trong 00.provision-vm.sh
 # TF_VAR_VM_NAME
 resource "multipass_instance" "vm" {
-  name   = "vm-mailpit"
+  name   = "vm-mongodb"
   cpus   = 2
-  memory = "4G"
+  memory = "2G"
   disk   = "20G"
   image  = "22.04" # 22.04 LTS
   cloudinit_file = "${path.module}/cloud-init.yaml"
