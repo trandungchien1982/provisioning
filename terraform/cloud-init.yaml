@@ -22,44 +22,6 @@ packages:
   #- gradle
   #- curl
 
-write_files:
-  - path: /opt/stack/docker-compose.yml
-    permissions: "0644"
-    content: |
-      version: '3.8'
-
-      services:
-        rabbitmq:
-          image: rabbitmq:4.3.0-rc.0-management-alpine
-          container_name: rabbitmq
-          ports:
-            - "5672:5672"
-            - "15672:15672"
-          environment:
-            RABBITMQ_DEFAULT_USER: admin
-            RABBITMQ_DEFAULT_PASS: admin
-          restart: unless-stopped
-
-        postgres:
-          image: postgres:16.13-alpine
-          container_name: postgres
-          ports:
-            - "5678:5432"
-          environment:
-            POSTGRES_USER: admin
-            POSTGRES_PASSWORD: admin
-            POSTGRES_DB: admin
-          restart: unless-stopped
-
-        nginx:
-          image: nginx:stable-alpine
-          container_name: nginx
-          ports:
-            - "80:80"
-          volumes:
-            - /opt/nginx-html:/usr/share/nginx/html:ro
-          restart: unless-stopped
-
 runcmd:
   # Ignore all following CLI because it will make Terraform to be timeout ...
   # Enable & start docker

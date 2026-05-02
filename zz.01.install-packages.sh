@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-keycloak"
+VM_NAME="vm-minio-s3"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."
