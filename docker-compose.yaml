@@ -1,13 +1,13 @@
 version: "3.8"
 
 services:
-  sftp:
-    image: atmoz/sftp:debian
-    container_name: sftp-server
-    restart: always
-    volumes:
-      # The folder name /home/admin/upload belongs to the user/pass : admin/admin
-      - ./host_sftp/upload:/home/admin/upload
+  filebrowser:
+    image: filebrowser/filebrowser:v2-s6
+    container_name: filebrowser
     ports:
-      - "2222:22"
-    command: admin:admin:1001
+      - "80:80"
+    volumes:
+      - /root/test-123:/srv
+      - ./data:/database
+      - ./config:/config
+    restart: always

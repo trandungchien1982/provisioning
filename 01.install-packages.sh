@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-sftp"
+VM_NAME="vm-file-explorer"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "===================================="
