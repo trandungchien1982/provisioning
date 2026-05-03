@@ -1,20 +1,15 @@
-services:
-  mongodb:
-    image: mongo:7.0
-    restart: always
-    ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+version: "3.8"
 
-  mongo-express:
-    image: mongo-express:1.0.2-20-alpine3.19
+services:
+  sftp:
+    image: atmoz/sftp:debian
+    container_name: sftp-server
     restart: always
+    volumes:
+      # List of user configuration
+      #- ./users.conf:/etc/sftp/users.conf:ro
+      # The folder name /home/admin/upload belongs to the user/pass : admin/admin
+      - ./host_sftp/upload:/home/foo/upload
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongodb:27017/
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
-      ME_CONFIG_BASICAUTH_USERNAME: root
-      ME_CONFIG_BASICAUTH_PASSWORD: root
+      - "2222:22"
+    command: foo:foo:1001

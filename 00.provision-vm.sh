@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-mongodb
-VM_NAME="vm-mongodb"
+# VM Name, e.g. vm-sftp
+VM_NAME="vm-sftp"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

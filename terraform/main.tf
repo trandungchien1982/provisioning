@@ -1,7 +1,7 @@
 # Khai báo biến, lấy từ khai báo trong 00.provision-vm.sh
 # TF_VAR_VM_NAME
 resource "multipass_instance" "vm" {
-  name   = "vm-mongodb"
+  name   = "vm-sftp"
   cpus   = 2
   memory = "2G"
   disk   = "20G"
