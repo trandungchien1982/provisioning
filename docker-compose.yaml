@@ -6,10 +6,8 @@ services:
     container_name: sftp-server
     restart: always
     volumes:
-      # List of user configuration
-      #- ./users.conf:/etc/sftp/users.conf:ro
       # The folder name /home/admin/upload belongs to the user/pass : admin/admin
-      - ./host_sftp/upload:/home/foo/upload
+      - ./host_sftp/upload:/home/admin/upload
     ports:
       - "2222:22"
-    command: foo:foo:1001
+    command: admin:admin:1001
