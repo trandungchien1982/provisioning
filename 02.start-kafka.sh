@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-sql-server"
-APP_NAMING="zz.02.start-sql-server"
+VM_NAME="vm-kafka"
+APP_NAMING="zz.02.start-kafka"
 
-# Start SQL Server with following information:
-echo "==> Start SQL Server ..."
+# Start Kafka with following information:
+echo "==> Start Kafka - Lightweight ..."
 echo "===================================="
 # Copy all config files (docker-compose, etc ...)
 multipass transfer *.* $VM_NAME:/home/ubuntu/
@@ -15,4 +15,4 @@ multipass exec $VM_NAME -- chmod +x /home/ubuntu/$APP_NAMING.sh
 multipass exec $VM_NAME -- /home/ubuntu/$APP_NAMING.sh
 echo "===================================="
 
-echo "==> Done! SQL Server ... "
+echo "==> Done! Kafka - Lightweight ... "

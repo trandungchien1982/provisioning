@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-sql-server"
+VM_NAME="vm-kafka"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "===================================="
