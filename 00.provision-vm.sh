@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-sftp
-VM_NAME="vm-sftp"
+# VM Name, e.g. vm-sql-server
+VM_NAME="vm-sql-server"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
