@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-kafka
-VM_NAME="vm-kafka"
+# VM Name, e.g. vm-kafka-full
+VM_NAME="vm-kafka-full"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

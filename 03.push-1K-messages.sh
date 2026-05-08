@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-kafka"
-APP_NAMING="zz.02.push-1K-messages"
+VM_NAME="vm-kafka-full"
+APP_NAMING="zz.02.push-10K-messages"
 
 # Start Kafka with following information:
-echo "==> Start Kafka - Import 1K messages ..."
+echo "==> Start Kafka - Import 10K messages ..."
 echo "===================================="
 # Copy all config files (docker-compose, etc ...)
 multipass transfer *.* $VM_NAME:/home/ubuntu/

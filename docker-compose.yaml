@@ -1,17 +1,18 @@
 services:
   kafka:
-    image: apache/kafka-native:4.1.2
-    container_name: kafka-native
+    image: apache/kafka:4.1.2
+    container_name: kafka
     hostname: kafka
     ports:
-      - "9092:9092"
+      # Expose to External server, using in VM level
+      # Lense IO will use internal connection via port 9092
       - "29092:29092"
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
 
       KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL://:29092,CONTROLLER://:9093
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://vm-kafka:29092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
@@ -23,7 +24,6 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_NUM_PARTITIONS: 3
       KAFKA_LOG_RETENTION_HOURS: 24
-
       KAFKA_HEAP_OPTS: "-Xms512m -Xmx1024m"
     volumes:
       - kafka_data:/var/lib/kafka/data
@@ -31,20 +31,33 @@ services:
     mem_limit: 1536m
     cpus: 1.0
 
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
+  lenses:
+    image: lensesio/lenses:latest
+    container_name: lenses
     ports:
-      - "8080:8080"
+      - "9991:9991"
+      - "9102:9102"
     environment:
-      KAFKA_CLUSTERS_0_NAME: local-kafka
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
-      JAVA_OPTS: "-Xms128m -Xmx256m"
+      ACCEPT_EULA: "true"
+      LENSES_PORT: 9991
+      LENSES_SECURITY_USER: admin
+      LENSES_SECURITY_PASSWORD: admin
+
+      # Kafka connection
+      LENSES_KAFKA_BROKERS: "PLAINTEXT://kafka:9092"
+
+      # Memory tuning for 3 CPU / 6GB RAM VM
+      LENSES_HEAP_OPTS: "-Xms1024m -Xmx2048m"
+    volumes:
+      - lenses_logs:/data/log
+      - lenses_state:/data/kafka-streams-state
     depends_on:
       - kafka
     restart: always
-    mem_limit: 512m
-    cpus: 0.5
+    mem_limit: 3072m
+    cpus: 2.0
 
 volumes:
   kafka_data:
+  lenses_logs:
+  lenses_state:
