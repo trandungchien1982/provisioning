@@ -1,0 +1,44 @@
+
+# Nano Testing
+192.168.1.10 jira.local
+192.168.1.11 confluence.local
+192.168.1.20 kafka.local
+192.168.1.30 registry.local
+192.168.4.35 tdc.01.local
+192.168.1.1  tdc.main.local
+
+
+# VM Multipass
+# Adding VM created by Multipass
+10.169.10.212 vm-rabbitmq
+10.169.10.97 vm-postgres
+10.169.10.211 vm-mysql
+10.169.10.158 vm-activemq
+10.169.10.106 vm-grafana-loki
+10.169.10.180 vm-k3d-cluster
+10.169.10.7   vm-keycloak
+10.169.10.69  vm-els-kibana
+10.169.10.23  vm-k3d-cluster-efk
+10.169.10.252 vm-minio-s3
+10.169.10.125 vm-redis vm-redis.host
+10.169.10.22  vm-mailpit vm-mailpit.host vm-mailpit.host.tf
+10.169.10.129 vm-mongodb vm-mongodb.host vm-tdc-mongo-db1.abc vm-tdc-mongo2-db2.tf
+10.169.10.3   vm-sftp
+10.169.10.71  vm-file-explorer
+10.169.10.189 vm-sql-server vm-tui-sql-server vm.sqlserver.ro
+10.169.10.146 vm-kafka
+10.169.10.140 vm-kafka-full
+10.169.10.139 vm-quarkus
+10.169.10.133 vm-ddram3
+10.169.10.122 vm-ddram2
+
+# Some other stuffs
+11.112.10.1   tf-domain1
+11.112.10.2   tf-domain2
+
+
+# Some .ru
+12.114.11.1   test-main1.ru
+12.114.11.2   test-main2.ru
+12.114.11.3   test-main3.ru
+
