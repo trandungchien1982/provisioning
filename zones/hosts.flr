@@ -1,0 +1,27 @@
+
+# The DNS for domain *.flr
+
+30.180.10.212 vm-rabbitmq.flr
+30.180.10.97  vm-postgres.flr
+30.180.10.211 vm-mysql.flr
+30.180.10.158 vm-activemq.flr
+30.180.10.106 vm-grafana-loki.flr
+30.180.10.180 vm-k3d-cluster.flr
+30.180.10.7   vm-keycloak.flr
+30.180.10.69  vm-els-kibana.flr
+30.180.10.23  vm-k3d-cluster-efk.flr
+30.180.10.252 vm-minio-s3.flr
+30.180.10.125 vm-redis.flr
+30.180.10.22  vm-mailpit.flr
+30.180.10.129 vm-mongodb.flr
+30.180.10.3   vm-sftp.flr
+30.180.10.71  vm-file-explorer.flr
+30.180.10.189 vm-sql-server.flr
+30.180.10.146 vm-kafka.flr
+30.180.10.140 vm-kafka-full.flr
+30.180.10.139 vm-quarkus.flr
+
+# Others
+30.180.10.10  mi-clip.flr
+30.180.10.11  mi-mix.flr
+30.180.10.12  mi-ioc.flr

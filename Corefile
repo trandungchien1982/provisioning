@@ -1,7 +1,28 @@
+# For *.flr requests
+flr:53 {
+    log
+    errors
+
+    # Using file /zones/hosts.flr
+    hosts /zones/hosts.flr {
+        ttl 60
+        fallthrough
+    }
+
+    # For others of *.tuf, e.g. file01.tuf, file02.tuf, ...
+    # we will forward to IP of vm-labs, and then the nginx reverse proxy will handle
+    template IN A {
+        match ^(.+)\.tuf\.$
+        answer "{{ .Name }} 60 IN A 10.169.10.28"
+    }
+}
+
+# For all remaining request
 .:53 {
     log
     errors
 
+    # Using file /zones/hosts
     hosts /zones/hosts {
         ttl 60
         fallthrough
