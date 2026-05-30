@@ -1,22 +1,11 @@
-# provisioning - Môi trường ActiveMQ trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường MusicServer trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
-# Mỗi branch sẽ chứa 1 Provisioning cụ thể, chẳng hạn như RabbitMQ, MySQL, PostgreSQL, ...
-# File setup-ips.yml sẽ chứa mapping cho ansible_host và được copy trước mỗi lần chạy Ansible, vd như :
-    rabbitmq_ip: 139.162.33.26
+# Hiện tại ta sử dụng Navidrome tạo Music Server UI, phân loại Albums
+- Có thể nghe All songs
+- Có thể tạo Playlists
 
-
-# Tiến hành provision môi trường Ubuntu 24.04 LTS, sử dụng Multipass như sau :
-Config tuỳ chỉnh sử dụng Terraform + Multipass
-
-vCPU: 1 core, 2Gb RAM, SSD 10Gb (chỉ định trong terraform)
-
-Naming của VM Ubuntu (chỉ định trong terraform hoặc file cloud-config.yaml)
-
-Cài sẵn : Docker, Java 25, Maven, Git, Gradle, Ansible
-
-User/Pass : root/root và cho phép SSH
-
+-----------------------------------------------------------------------
 Cho phép SSH với các public key sau đây :
 
 ~/.ssh/id_rsa.pub

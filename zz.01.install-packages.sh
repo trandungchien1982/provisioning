@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-file-explorer"
+VM_NAME="vm-music-server"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."

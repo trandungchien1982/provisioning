@@ -1,28 +1,16 @@
 version: "3.8"
 
 services:
-  filebrowser:
-    image: filebrowser/filebrowser:s6
-    container_name: filebrowser
+  navidrome:
+    image: deluan/navidrome
     ports:
-      - "80:80"
-
-    # The default user is: admin, the password can be extracted in docker logs ...
+      - "4533:4533"
     volumes:
-      - /root/test-123:/srv
-      - ./data:/database
-      - ./config:/config
+      - ./music:/music
+      - ./navidrome:/data
 
     environment:
-      - PUID=0
-      - PGID=0
-
-    # CLI for create new user, but not working properly
-    command: >
-      sh -c "
-        filebrowser config init &&
-        filebrowser users add admin1 password12345678 --perm.admin || true &&
-        filebrowser -r /srv
-      "
+      # Allow share Album/Tracks/... without login ...
+      ND_ENABLESHARING: "true"
 
     restart: always
