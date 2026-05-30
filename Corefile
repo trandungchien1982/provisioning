@@ -8,6 +8,12 @@ flr:53 {
         ttl 60
         fallthrough
     }
+}
+
+# For *.tuf requests
+tuf:53 {
+    log
+    errors
 
     # For others of *.tuf, e.g. file01.tuf, file02.tuf, ...
     # we will forward to IP of vm-labs, and then the nginx reverse proxy will handle
