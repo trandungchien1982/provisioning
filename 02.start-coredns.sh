@@ -16,3 +16,11 @@ multipass exec $VM_NAME -- /home/ubuntu/$APP_NAMING.sh
 echo "===================================="
 
 echo "==> Done! CoreDNS ... "
+
+
+=====================================
+Xu ly tai day
+Còn ai biết, nước chảy đá mòn
+Bên cầu dệt lụa, ta nào có hay.
+Phố đêm bên bờ suối vắng người đi mãi.
+Còn ta mãi đợi chờ ai cho người về ...

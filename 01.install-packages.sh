@@ -30,3 +30,10 @@ ldkdls
     long nghe
         bao ngap ngung xao
         xuyen , so me biet chuyen minh ...
+
+
+===============================================
+THem bot noi dung
+Toi con khong de tam.
+Ong quan tam lam gi ???
+--------------------------------------------
