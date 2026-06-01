@@ -37,3 +37,6 @@ THem bot noi dung
 Toi con khong de tam.
 Ong quan tam lam gi ???
 --------------------------------------------
+Ngoai kia hoa phuong rung roi toi ta...
+Du am lam song lai doi ta.
+Du ngan cach nho hoai ngay qua ...
