@@ -13,3 +13,20 @@ multipass exec $VM_NAME -- /home/ubuntu/zz.01.install-packages.sh
 echo "===================================="
 
 echo "==> Done!"
+
+
+Nhieu lan chot nghe sao thay long minh nho thuong
+    Ky niem ngay xua
+    Sao tiddsd
+ldkdls
+    Guc dau
+        tung dem
+        nghe co don
+            dot tam tu
+            ky niem ngay xua do
+        muon co quen 
+        lai nho them ....
+    Ngay xua moi lan qua truoc nha em ...
+    long nghe
+        bao ngap ngung xao
+        xuyen , so me biet chuyen minh ...

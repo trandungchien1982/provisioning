@@ -50,3 +50,10 @@ mkdir ~/tdchien-mount/$VM_NAME
 multipass mount ~/tdchien-mount/$VM_NAME $VM_NAME:/root/$VM_NAME
 echo "Finish mounting folder : ~/tdchien-mount/$VM_NAME into $VM_NAME:/root/$VM_NAME"
 echo "===================== End provision ... "
+
+Them vai cai
+Nua di
+...
+
+Vai nam qua
+Long nguoi thay doi, bac den nhac them buon ...

@@ -1,0 +1,4 @@
+ansible-env/pyvenv.cfg
+ansible-env/bin/python
+ansible-env/bin/python3
+ansible-env/lib64
