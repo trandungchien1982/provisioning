@@ -1,16 +1,20 @@
-version: "3.8"
-
 services:
-  navidrome:
-    image: deluan/navidrome
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    restart: always
+
     ports:
-      - "4533:4533"
-    volumes:
-      - ./music:/music
-      - ./navidrome:/data
+      - "8443:8443"
 
     environment:
-      # Allow share Album/Tracks/... without login ...
-      ND_ENABLESHARING: "true"
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+      - PASSWORD=admin
+      - SUDO_PASSWORD=admin
+      - DEFAULT_WORKSPACE=/workspace
 
-    restart: always
+    volumes:
+      - ./config:/config
+      - ./workspace:/workspace

@@ -1,9 +1,7 @@
-# provisioning - Môi trường MusicServer trên VM Ubuntu 24.04 LTS sử dụng Multipass 
+# provisioning - Môi trường CodeServer trên VM Ubuntu 24.04 LTS sử dụng Multipass 
 Xử lý Provisioning môi trường cụ thể sử dụng Terraform &amp; Ansible &amp; Docker + Ubuntu
 
-# Hiện tại ta sử dụng Navidrome tạo Music Server UI, phân loại Albums
-- Có thể nghe All songs
-- Có thể tạo Playlists
+# Hiện tại ta sử dụng Code-Server để tạo Online Editor, mức leightweight ...
 
 -----------------------------------------------------------------------
 Cho phép SSH với các public key sau đây :

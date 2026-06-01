@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-music-server"
+VM_NAME="vm-code-server"
 
-echo "==> Start Inner MusicServer ..."
+echo "==> Start Main App (Inner) ..."
 cd /home/ubuntu
 sudo docker-compose up -d
 echo "===================================="
-echo "==> Done! Inner MusicServer ..."
+echo "==> Done! Main App (Inner) ..."
