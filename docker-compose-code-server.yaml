@@ -8,21 +8,30 @@ services:
     networks:
       - common-network
 
-  code-server2:
+  music-server:
     image: yeasy/simple-web:latest
-    container_name: code-server2
+    container_name: music-server
     restart: always
     ports:
       - "9002:80"
     networks:
       - common-network
 
-  code-server3:
+  file-server:
     image: nginxdemos/hello:0.4
-    container_name: code-server3
+    container_name: file-server
     restart: always
     ports:
       - "9003:80"
+    networks:
+      - common-network
+
+  video-server:
+    image: nginxdemos/hello:0.4
+    container_name: video-server
+    restart: always
+    ports:
+      - "9004:80"
     networks:
       - common-network
 
