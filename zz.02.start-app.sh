@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-code-server"
+VM_NAME="vm-nginx"
 
 echo "==> Start Main App (Inner) ..."
 cd /home/ubuntu

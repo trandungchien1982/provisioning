@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-code-server"
+VM_NAME="vm-nginx"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."

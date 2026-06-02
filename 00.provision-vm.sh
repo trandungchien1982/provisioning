@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-code-server
-VM_NAME="vm-code-server"
+# VM Name, e.g. vm-nginx
+VM_NAME="vm-nginx"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"
