@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+VM_NAME="vm-nginx"
+APP_NAMING="zz.03.start-app-https"
+
+echo "==> Start App ..."
+echo "===================================="
+# Copy all config files (docker-compose, etc ...)
+multipass transfer *.* $VM_NAME:/home/ubuntu/
+#multipass exec $VM_NAME -- sudo mkdir -p /home/ubuntu/nginx/https-conf.d
+multipass transfer ./nginx/https-conf.d/* $VM_NAME:/home/ubuntu/nginx
+multipass transfer ./certs/* $VM_NAME:/home/ubuntu/nginx
+
+# To be executed :)
+multipass exec $VM_NAME -- chmod +x /home/ubuntu/$APP_NAMING.sh
+multipass exec $VM_NAME -- /home/ubuntu/$APP_NAMING.sh
+echo "===================================="
+
+echo "==> Done! App ... "

@@ -1,0 +1,18 @@
+total 64
+drwxrwxr-x   6 tdc tdc 4096 May 20 22:06 .
+drwxr-x---+ 45 tdc tdc 4096 May 20 22:06 ..
+-rwxrwxr-x   1 tdc tdc 1435 May 17 00:06 00.provision-vm.sh
+-rwxrwxr-x   1 tdc tdc  541 May 17 00:06 01.install-packages.sh
+-rwxrwxr-x   1 tdc tdc  502 May 17 00:07 02.start-coredns.sh
+-rw-rw-r--   1 tdc tdc  140 May 17 00:04 Corefile
+-rw-rw-r--   1 tdc tdc  267 May 17 00:09 docker-compose.yaml
+drwxrwxr-x   8 tdc tdc 4096 May 17 00:17 .git
+drwxrwxr-x   3 tdc tdc 4096 May 20 22:04 .idea
+-rw-rw-r--   1 tdc tdc 1077 Apr 13 18:22 LICENSE
+-rw-rw-r--   1 tdc tdc 1234 May  2 16:39 README.md
+-rw-rw-r--   1 tdc tdc    0 May 20 22:06 result.txt
+-rw-rw-r--   1 tdc tdc   62 May 17 00:11 result.yaml
+drwxrwxr-x   3 tdc tdc 4096 May 17 00:11 terraform
+drwxrwxr-x   2 tdc tdc 4096 May 20 17:05 zones
+-rwxrwxr-x   1 tdc tdc  363 May 17 00:07 zz.01.install-packages.sh
+-rwxrwxr-x   1 tdc tdc  247 May 17 00:09 zz.02.start-coredns.sh
