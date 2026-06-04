@@ -1,16 +1,51 @@
-version: "3.8"
-
+# docker-compose.yml
 services:
-  navidrome:
-    image: deluan/navidrome
-    ports:
-      - "4533:4533"
-    volumes:
-      - ./music:/music
-      - ./navidrome:/data
-
-    environment:
-      # Allow share Album/Tracks/... without login ...
-      ND_ENABLESHARING: "true"
-
+  postgres:
+    image: postgres:17-alpine
+    container_name: unleash-postgres
     restart: always
+    environment:
+      POSTGRES_DB: unleash
+      POSTGRES_USER: unleash_user
+      POSTGRES_PASSWORD: unleash_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - unleash_postgres_data:/var/lib/postgresql/data
+    networks:
+      - unleash-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unleash_user -d unleash"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  unleash:
+    image: unleashorg/unleash-server:latest
+    container_name: unleash-server
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "7000:4242"
+    environment:
+      # Setup base domain to bypass error in creating new ff: TypeError: crypto.randomUUID is not a function
+      BASE_URI: https://vm-unleash.tt
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: unleash
+      DATABASE_USERNAME: unleash_user
+      DATABASE_PASSWORD: unleash_password
+      DATABASE_SSL: "false"
+      LOG_LEVEL: warn
+      CHECK_VERSION: "false"
+    networks:
+      - unleash-net
+
+volumes:
+  unleash_postgres_data:
+
+networks:
+  unleash-net:
+    driver: bridge
