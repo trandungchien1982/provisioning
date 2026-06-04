@@ -1,0 +1,4 @@
+io:
+  getunleash:
+    environment: production
+    api-token: ${UNLEASH_API_TOKEN_PRODUCTION}

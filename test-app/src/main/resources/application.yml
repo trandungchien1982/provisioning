@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: unleash-ff-demo
+
+app:
+  feature-flags:
+    names:
+      - mix-data-color-01
+      - home-page-02
+      - clear-data-03
+      - enabled-fill-data
+      - hot-reload-data
+
+io:
+  getunleash:
+    app-name: ${spring.application.name}
+    instance-id: ${UNLEASH_INSTANCE_ID:unleash-ff-demo-local}
+    api-url: ${UNLEASH_API_URL:http://localhost:7000/api/}
+    environment: ${UNLEASH_ENVIRONMENT:development}
+    api-token: ${UNLEASH_API_TOKEN}

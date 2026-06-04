@@ -1,0 +1,20 @@
+services:
+  unleash-ff-demo-development:
+    build: .
+    container_name: unleash-ff-demo-development
+    environment:
+      SPRING_PROFILES_ACTIVE: development
+      UNLEASH_API_URL: http://localhost:4242/api/
+      UNLEASH_ENVIRONMENT: development
+      UNLEASH_API_TOKEN: ${UNLEASH_DEV_TOKEN}
+      UNLEASH_INSTANCE_ID: unleash-ff-demo-development
+
+  unleash-ff-demo-production:
+    build: .
+    container_name: unleash-ff-demo-production
+    environment:
+      SPRING_PROFILES_ACTIVE: production
+      UNLEASH_API_URL: http://vm-unleash.tt:7000/api
+      UNLEASH_ENVIRONMENT: production
+      UNLEASH_API_TOKEN: ${UNLEASH_PROD_TOKEN}
+      UNLEASH_INSTANCE_ID: unleash-ff-demo-production
