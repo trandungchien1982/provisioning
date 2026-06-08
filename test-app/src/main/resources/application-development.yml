@@ -1,3 +1,4 @@
 io:
   getunleash:
     environment: development
+    api-token: ${UNLEASH_API_TOKEN:*:development.35a1b6148a05099f72cadb7b5c4154b5c2bd5135cc20bee41173e886}
