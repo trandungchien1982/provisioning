@@ -138,3 +138,7 @@ zz_step_02_start_coredns() {
 step_00_provision_vm
 step_01_install_packages
 step_02_start_coredns
+
+now=$(date -Iseconds)
+totalFiles=$(find "$(dirname "$0")" -not -path '*/.git/*' -type f | wc -l)
+echo "Total files in the project at $now is $totalFiles"

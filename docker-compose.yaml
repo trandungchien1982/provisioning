@@ -15,3 +15,18 @@ services:
       - ./zones:/zones
 
     command: -conf /Corefile
+
+  coredns-new:
+    image: coredns/coredns:1.14.2
+    container_name: coredns-new
+    restart: always
+
+    ports:
+      - "153:53/udp"
+      - "153:53/tcp"
+
+    volumes:
+      - ./Corefile-1:/Corefile
+      - ./zones-1:/zones-1
+
+    command: -conf /Corefile

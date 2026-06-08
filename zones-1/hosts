@@ -1,0 +1,27 @@
+
+# VM Multipass
+# Adding VM created by Multipass
+10.169.10.212 vm-rabbitmq.tt
+10.169.10.97  vm-postgres.tt
+10.169.10.211 vm-mysql.tt
+10.169.10.158 vm-activemq.tt
+10.169.10.106 vm-grafana-loki.tt
+10.169.10.180 vm-k3d-cluster.tt
+10.169.10.7   vm-keycloak.tt
+10.169.10.69  vm-els-kibana.tt
+10.169.10.23  vm-k3d-cluster-efk.tt
+10.169.10.252 vm-minio-s3.tt
+10.169.10.125 vm-redis.tt
+10.169.10.22  vm-mailpit.tt
+10.169.10.129 vm-mongodb.tt
+10.169.10.3   vm-sftp.tt
+10.169.10.71  vm-file-explorer.tt
+10.169.10.189 vm-sql-server.tt
+10.169.10.146 vm-kafka.tt
+10.169.10.140 vm-kafka-full.tt
+10.169.10.139 vm-quarkus.tt
+
+# Others
+20.170.10.10  mi-clip.tt
+20.170.10.11  mi-mix.tt
+20.170.10.12  mi-ioc.tt
