@@ -2,8 +2,8 @@
 set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
-# VM Name, e.g. vm-unleash
-VM_NAME="vm-unleash"
+# VM Name, e.g. vm-image-server
+VM_NAME="vm-image-server"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

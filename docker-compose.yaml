@@ -1,51 +1,43 @@
-# docker-compose.yml
 services:
-  postgres:
-    image: postgres:17-alpine
-    container_name: unleash-postgres
-    restart: always
-    environment:
-      POSTGRES_DB: unleash
-      POSTGRES_USER: unleash_user
-      POSTGRES_PASSWORD: unleash_password
-    ports:
-      - "5432:5432"
-    volumes:
-      - unleash_postgres_data:/var/lib/postgresql/data
-    networks:
-      - unleash-net
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U unleash_user -d unleash"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  unleash:
-    image: unleashorg/unleash-server:latest
-    container_name: unleash-server
+  photoprism:
+    image: photoprism/photoprism:ubuntu
+    container_name: photoprism
     restart: always
     depends_on:
-      postgres:
-        condition: service_healthy
+      - mariadb
     ports:
-      - "7000:4242"
+      - "2342:2342"
     environment:
-      # Setup base domain to bypass error in creating new ff: TypeError: crypto.randomUUID is not a function
-      BASE_URI: https://vm-unleash.tt
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: unleash
-      DATABASE_USERNAME: unleash_user
-      DATABASE_PASSWORD: unleash_password
-      DATABASE_SSL: "false"
-      LOG_LEVEL: warn
-      CHECK_VERSION: "false"
-    networks:
-      - unleash-net
+      PHOTOPRISM_ADMIN_USER: "admin"
+      PHOTOPRISM_ADMIN_PASSWORD: "change_this_password"
 
-volumes:
-  unleash_postgres_data:
+      #PHOTOPRISM_SITE_URL: "http://photoprism.your-domain.local/"
+      PHOTOPRISM_ORIGINALS_LIMIT: 5000
 
-networks:
-  unleash-net:
-    driver: bridge
+      # Disable AI / ML features
+      PHOTOPRISM_DISABLE_TENSORFLOW: "true"
+      PHOTOPRISM_DISABLE_FACES: "true"
+      PHOTOPRISM_DISABLE_CLASSIFICATION: "true"
+
+      PHOTOPRISM_DATABASE_DRIVER: "mysql"
+      PHOTOPRISM_DATABASE_SERVER: "mariadb:3306"
+      PHOTOPRISM_DATABASE_NAME: "photoprism"
+      PHOTOPRISM_DATABASE_USER: "photoprism"
+      PHOTOPRISM_DATABASE_PASSWORD: "photoprism_pass"
+
+    volumes:
+      - ./photos/originals:/photoprism/originals
+      - ./photos/import:/photoprism/import
+      - ./storage:/photoprism/storage
+
+  mariadb:
+    image: mariadb:11
+    container_name: photoprism-mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: "root_pass"
+      MARIADB_DATABASE: "photoprism"
+      MARIADB_USER: "photoprism"
+      MARIADB_PASSWORD: "photoprism_pass"
+    volumes:
+      - ./database:/var/lib/mysql

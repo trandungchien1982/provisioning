@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-unleash"
+VM_NAME="vm-image-server"
 
 echo "==> Start Inner App ..."
 cd /home/ubuntu
