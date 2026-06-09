@@ -4,7 +4,6 @@ set -e
 VM_NAME="vm-image-server"
 APP_NAMING="zz.02.start-app"
 
-# Start MusicServer with following information:
 echo "==> Start App ..."
 echo "===================================="
 # Copy all config files (docker-compose, etc ...)
