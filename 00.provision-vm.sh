@@ -18,6 +18,7 @@ PUB_KEY=$(cat ~/.ssh/id_rsa.pub)
 
 cd terraform
 
+# Biet noi gi day cho vui nha cua 
 echo "==> Injecting SSH key into cloud-init..."
 sed -i.bak "s|__SSH_KEY__|${PUB_KEY}|g" cloud-init.yaml
 
@@ -27,6 +28,8 @@ terraform init
 echo "==> Applying Terraform..."
 terraform apply -auto-approve
 
+# Em con nho hay em da quen
+# Nho Sai Gon mua roi chot nang ...
 echo "==> Fetching VM IP..."
 VM_IP=$(terraform output -raw vm_ip)
 

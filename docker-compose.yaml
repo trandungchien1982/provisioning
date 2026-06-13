@@ -7,10 +7,13 @@ services:
     ports:
       - "8443:8443"
 
+    # Hieu chinh bien moi truong
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
+      # Mat khau mac dinh
+      # PASSWORD SUDO ...
       - PASSWORD=admin
       - SUDO_PASSWORD=admin
       - DEFAULT_WORKSPACE=/workspace
