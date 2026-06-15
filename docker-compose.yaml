@@ -1,51 +1,72 @@
-# docker-compose.yml
 services:
-  postgres:
-    image: postgres:17-alpine
-    container_name: unleash-postgres
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: wordpress-nginx
     restart: always
-    environment:
-      POSTGRES_DB: unleash
-      POSTGRES_USER: unleash_user
-      POSTGRES_PASSWORD: unleash_password
     ports:
-      - "5432:5432"
+      - "80:80"
+      - "443:443"
     volumes:
-      - unleash_postgres_data:/var/lib/postgresql/data
+      - ./nginx/https-conf.d:/etc/nginx/conf.d:ro
+      - ./certs:/etc/nginx/certs:ro
     networks:
-      - unleash-net
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U unleash_user -d unleash"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  unleash:
-    image: unleashorg/unleash-server:latest
-    container_name: unleash-server
-    restart: always
+      - common-network
     depends_on:
-      postgres:
-        condition: service_healthy
-    ports:
-      - "7000:4242"
-    environment:
-      # Setup base domain to bypass error in creating new ff: TypeError: crypto.randomUUID is not a function
-      BASE_URI: https://vm-unleash.tt
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: unleash
-      DATABASE_USERNAME: unleash_user
-      DATABASE_PASSWORD: unleash_password
-      DATABASE_SSL: "false"
-      LOG_LEVEL: warn
-      CHECK_VERSION: "false"
-    networks:
-      - unleash-net
+      - wordpress-server-db
+      - wordpress-site1
+      - wordpress-site2
 
-volumes:
-  unleash_postgres_data:
+  wordpress-server-db:
+    image: mariadb:11.4
+    container_name: wp-mariadb
+    ports:
+      - "3306:3306"
+
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: wp_main
+      MARIADB_USER: wp_user
+      MARIADB_PASSWORD: wp_password_change_me
+    volumes:
+      - ./mariadb-data:/var/lib/mysql
+    networks:
+      - common-network
+
+  wordpress-site1:
+    image: wordpress:6.6.2-php8.3-apache
+    container_name: wordpress-site1
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wordpress-server-db:3306
+      WORDPRESS_DB_NAME: wp_site1
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - ./wordpress-site1-data:/var/www/html
+    networks:
+      - common-network
+    depends_on:
+      - wordpress-server-db
+
+  wordpress-site2:
+    image: wordpress:6.6.2-php8.3-apache
+    container_name: wordpress-site2
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wordpress-server-db:3306
+      WORDPRESS_DB_NAME: wp_site2
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - ./wordpress-site2-data:/var/www/html
+    networks:
+      - common-network
+    depends_on:
+      - wordpress-site1
 
 networks:
-  unleash-net:
-    driver: bridge
+  common-network:
+    external: true

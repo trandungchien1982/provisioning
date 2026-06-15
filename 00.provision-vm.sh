@@ -3,7 +3,7 @@ set -e
 
 # Provision the Ubuntu 24.04 LTS using Multipass + Terraform
 # VM Name, e.g. vm-unleash
-VM_NAME="vm-unleash"
+VM_NAME="vm-wordpress"
 
 # Result file contains the VM IP Address + Creation Time
 RESULT_FILE="result.yaml"

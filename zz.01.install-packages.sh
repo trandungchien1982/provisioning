@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-VM_NAME="vm-unleashs"
+VM_NAME="vm-wordpress"
 
 # Install standard packages, e.g. Docker, Docker Compose, Java, Maven, Gradle, ...
 echo "==> Updating system..."

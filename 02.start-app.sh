@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-VM_NAME="vm-unleash"
+VM_NAME="vm-wordpress"
 APP_NAMING="zz.02.start-app"
 
-# Start MusicServer with following information:
+# Start WordPress with following information:
 echo "==> Start App ..."
 echo "===================================="
 # Copy all config files (docker-compose, etc ...)

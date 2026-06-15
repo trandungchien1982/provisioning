@@ -1,11 +1,11 @@
 # Khai báo biến, lấy từ khai báo trong 00.provision-vm.sh
 # TF_VAR_VM_NAME
 resource "multipass_instance" "vm" {
-  name   = "vm-unleash"
+  name   = "vm-wordpress"
   cpus   = 2
-  memory = "2G"
+  memory = "3G"
   disk   = "20G"
-  image  = "22.04" # 22.04 LTS
+  image  = "24.04" # 24.04 LTS
   cloudinit_file = "${path.module}/cloud-init.yaml"
 }
 
